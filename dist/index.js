@@ -41,7 +41,7 @@ asientoContable_1.default.hasMany(libroMayor_1.default, { foreignKey: "idAsiento
 libroMayor_1.default.belongsTo(asientoContable_1.default, { foreignKey: "idAsientoContables" });
 asientoContable_1.default.hasMany(cuenta_1.default, { foreignKey: "idAsientoContables" });
 cuenta_1.default.belongsTo(asientoContable_1.default, { foreignKey: "idAsientoContables" });
-// 
+//
 server.app.post("/asientoContable", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     yield connection.sequelize.sync();
     try {
@@ -106,8 +106,8 @@ server.app.get("/asientoContable/:id", (req, res) => __awaiter(void 0, void 0, v
     let sumaDebe = 0;
     let sumaHaber = 0;
     for (const cuent of cuenta) {
-        sumaDebe += parseFloat((cuent.Debe));
-        sumaHaber += parseFloat((cuent.Haber));
+        sumaDebe += parseFloat(cuent.Debe);
+        sumaHaber += parseFloat(cuent.Haber);
     }
     const total = {
         sumaDebe,
