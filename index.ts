@@ -34,19 +34,19 @@ LibroMayor.belongsTo(AsientoContable, { foreignKey: "idAsientoContables" });
 AsientoContable.hasMany(Cuenta, { foreignKey: "idAsientoContables" });
 Cuenta.belongsTo(AsientoContable, { foreignKey: "idAsientoContables" });
 
-// 
+//
 server.app.post("/asientoContable", async (req, res) => {
     await connection.sequelize.sync();
-    try{
+    try {
         const asientoContable = await AsientoContable.create(req.body);
         res.send(asientoContable);
         res.statusMessage = "Asiento Contable created successfully";
         console.log("Asiento Contable created successfully");
-    }
-    catch(error){
+    } catch (error) {
         res.send(error);
         res.statusMessage = "Error creating Asiento Contable";
-    }});
+    }
+});
 
 // create Cuenta
 server.app.post("/cuenta", async (req, res) => {
@@ -56,8 +56,7 @@ server.app.post("/cuenta", async (req, res) => {
         await cuenta.save();
         res.json(cuenta.toJSON());
         res.send("Cuenta creada");
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error);
     }
 });
@@ -74,24 +73,12 @@ server.app.post("/libroMayor", async (req, res) => {
     }
 });
 
-
-
-
-
-
-
-
-
-
-
-
 // read asientoContable
 server.app.get("/asientoContable", async (req, res) => {
     await connection.sequelize.sync();
     const asientoContable = await AsientoContable.findAll();
-    const cuenta = await Cuenta.findAll({
-    });
-    res.json({asientoContable});
+    const cuenta = await Cuenta.findAll({});
+    res.json({ asientoContable });
 });
 
 // read for id asientoContable
@@ -100,7 +87,7 @@ server.app.get("/asientoContable/:id", async (req, res) => {
     const asientoContable = await AsientoContable.findAll({
         where: { idAsientoContables: req.params.id },
     });
-    
+
     let idDeAsiento = 0;
     for (const libro of asientoContable) {
         idDeAsiento = libro.idAsientoContables;
@@ -115,33 +102,28 @@ server.app.get("/asientoContable/:id", async (req, res) => {
     let sumaDebe = 0;
     let sumaHaber = 0;
     for (const cuent of cuenta) {
-        sumaDebe += parseFloat((cuent.Debe))
-        sumaHaber += parseFloat((cuent.Haber))
+        sumaDebe += parseFloat(cuent.Debe);
+        sumaHaber += parseFloat(cuent.Haber);
     }
 
     const total = {
         sumaDebe,
         sumaHaber,
-    }
-    if(asientoContable.length > 0){
-        res.json({asientoContable, cuenta, total});
-    }else{
+    };
+    if (asientoContable.length > 0) {
+        res.json({ asientoContable, cuenta, total });
+    } else {
         res.status(404).send("No existe el asiento Contable");
     }
 });
 
-
-
-
-
-
 // read all cuenta
 server.app.get("/cuenta", async (req, res) => {
     await connection.sequelize.sync();
-    const cuenta = await Cuenta.findAll({include: [AsientoContable]});
-    if(cuenta.length > 0){
+    const cuenta = await Cuenta.findAll({ include: [AsientoContable] });
+    if (cuenta.length > 0) {
         res.json(cuenta);
-    }else{
+    } else {
         res.status(404).send("No existe la cuenta");
     }
 });
@@ -155,31 +137,12 @@ server.app.get("/cuenta/:id", async (req, res) => {
         },
         include: [AsientoContable],
     });
-    if(cuenta.length > 0){
+    if (cuenta.length > 0) {
         res.json(cuenta);
-    }else{
+    } else {
         res.status(404).send("No existe la cuenta");
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 server.app.get("/libroMayor/", async (req, res) => {
     await connection.sequelize.sync();
@@ -188,9 +151,9 @@ server.app.get("/libroMayor/", async (req, res) => {
     });
     const cuenta = await Cuenta.findAll({});
 
-    if(libroMayor.length > 0){
-        res.json({libroMayor, cuenta});
-    }else{
+    if (libroMayor.length > 0) {
+        res.json({ libroMayor, cuenta });
+    } else {
         res.status(404).send("No existe el libro mayor");
     }
 });
@@ -213,19 +176,17 @@ server.app.get("/libroMayor/:id", async (req, res) => {
         },
     });
 
-    if(libroMayor.length > 0){
-        res.json({libroMayor, cuenta});
-    }else{
+    if (libroMayor.length > 0) {
+        res.json({ libroMayor, cuenta });
+    } else {
         res.status(404).send("No existe el libro mayor");
     }
 });
 
-
-
 // update asientoContable
 server.app.put("/asientoContable/editar/:id", async (req, res) => {
     await connection.sequelize.sync();
-    try{
+    try {
         const asiento = await AsientoContable.findByPk(req.params.id);
         if (asiento) {
             await asiento.update(req.body);
@@ -234,8 +195,7 @@ server.app.put("/asientoContable/editar/:id", async (req, res) => {
         } else {
             res.send("Cuenta no encontrada");
         }
-    }
-    catch(error){
+    } catch (error) {
         res.send(error);
         res.statusMessage = "Error updating Asiento Contable";
     }
@@ -243,19 +203,17 @@ server.app.put("/asientoContable/editar/:id", async (req, res) => {
 
 // update cuenta
 server.app.put("/cuenta/editar/:id", async (req, res) => {
-    try{
+    try {
         await connection.sequelize.sync();
         const cuenta = await Cuenta.findByPk(req.params.id);
         if (cuenta) {
             await cuenta.update(req.body);
             res.send(cuenta).status(200);
             res.statusMessage = "Cuenta updated successfully";
-        }
-        else {
+        } else {
             res.send("Cuenta no encontrada").status(404);
         }
-    }
-    catch(error){
+    } catch (error) {
         res.send(error);
         res.statusMessage = "Error updating Cuenta";
     }
@@ -263,19 +221,17 @@ server.app.put("/cuenta/editar/:id", async (req, res) => {
 
 // update libroMayor
 server.app.put("/libroMayor/editar/:id", async (req, res) => {
-    try{
+    try {
         await connection.sequelize.sync();
         const libroMayor = await LibroMayor.findByPk(req.params.id);
         if (libroMayor) {
             await libroMayor.update(req.body);
             res.send(libroMayor).status(200);
             res.statusMessage = "Libro Mayor updated successfully";
-        }
-        else {
+        } else {
             res.send("Libro Mayor no encontrada").status(404);
         }
-    }
-    catch(error){
+    } catch (error) {
         res.send(error);
         res.statusMessage = "Error updating Libro Mayor";
     }
