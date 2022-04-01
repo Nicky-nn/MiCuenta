@@ -1,0 +1,350 @@
+{
+	"info": {
+		"_postman_id": "d95e5a4e-c1e3-4982-8bd3-900fa7be732a",
+		"name": "Prueba2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Libro Mayor Buscar por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/libroMayor/5",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"libroMayor",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Libro Mayor Busca Todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/libroMayor/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"libroMayor",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Todas las cuentas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/cuenta/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cuenta",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Cuenta por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/cuenta/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cuenta",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Asiento Contable por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/asientoContable/6",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"asientoContable",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Todos los Asientos Contables",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/asientoContable",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"asientoContable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Libro Mayor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Detalle\": \"Algozzz\",\r\n    \"SumaDebe\": 0,\r\n    \"SumaHaber\": 0,\r\n    \"idAsientoContables\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/libroMayor",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"libroMayor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Cuenta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Nombre\": \"Algo\",\r\n    \"Tipo\": \"banco\",\r\n    \"Debe\": 100,\r\n    \"Haber\": 0,\r\n    \"idAsientoContables\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/cuenta",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cuenta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Asiento Contable",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Fecha\": \"2022-03-31T20:22:56.585Z\",\r\n    \"Descripcion\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/asientoContable",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"asientoContable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Asiento Contable",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Fecha\": \"2022-03-31T20:22:56.000Z\",\r\n    \"Descripcion\": \"Editandxd\",\r\n    \"createdAt\": \"2022-03-31T23:37:04.000Z\",\r\n    \"updatedAt\": \"2022-03-31T23:37:04.000Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/asientoContable/editar/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"asientoContable",
+						"editar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Cuenta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Nombre\": \"Algo\",\r\n    \"Tipo\": \"Banco\",\r\n    \"Debe\": \"100.00000\",\r\n    \"Haber\": \"0.00000\",\r\n    \"idAsientoContables\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/cuenta/editar/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cuenta",
+						"editar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Libro Mayor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idLibroMayors\": 1,\r\n    \"Detalle\": \"Algozzz\",\r\n    \"SumaDebe\": \"100\",\r\n    \"SumaHaber\": \"0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/libroMayor/editar/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"libroMayor",
+						"editar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Asiento Contable",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/asientoContable/eliminar/5",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"asientoContable",
+						"eliminar",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Cuenta",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/cuenta/eliminar/8",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cuenta",
+						"eliminar",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Libro Mayor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/libroMayor/eliminar/4",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"libroMayor",
+						"eliminar",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
