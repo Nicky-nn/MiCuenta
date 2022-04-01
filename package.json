@@ -13,10 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
-    "is-alphanumeric": "^1.0.0",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.17.0",
-    "validator": "^13.7.0"
+    "sequelize": "^6.17.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
