@@ -1,7 +1,7 @@
 {
   "name": "micuenta",
   "version": "1.0.0",
-  "description": "",
+  "description": "https://github.com/Nicky-nn/MiCuenta",
   "main": "app.js",
   "scripts": {
     "start": "node dist/index.js",
